@@ -1,0 +1,47 @@
+Structure of the project:
+--- data 
+    - create_db.py
+    - cnn_daily_mail_train.db
+    - cnn_daily_mail_validation.db
+    - cnn_daily_mail_test.db
+--- models
+    - bert_coverage.bin
+    - fluency_news_bs32.bin
+    - gpt2_copier23.bin
+    - keyword_extractor.joblib
+--- logs
+    - coverage (x_pretrain_use_only)
+    -
+-rest
+-of 
+-the
+-files
+
+ Python 3.6.10, Transformers 3.1.0 and Sklearn 0.22.1
+
+##extra info
+conda info
+- conda version : 24.5.0
+- conda-build version : 24.5.1
+
+#env
+conda create -n sl_cpu python=3.8.20
+conda activate sl_cpu
+pip3 install torch torchvision torchaudio
+pip install -r requirements.txt
+
+#for datasets db file creation in data folder
+sudo apt-get install git-lfs
+create_db.py cnn_dailymail_train.db train
+create_db.py cnn_dailymail_validation.db validation
+create_db.py cnn_dailymail_test.db test
+
+#errors
+pip install protobuf==3.20.1
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+
+=======================
+#extra not req
+> python prompt ?
+from datasets import load_dataset, load
+dataset_test = load_dataset("ccdv/cnn_dailymail", "3.0.0")
